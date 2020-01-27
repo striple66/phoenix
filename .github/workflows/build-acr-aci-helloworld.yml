@@ -12,21 +12,21 @@ jobs:
     - uses: actions/checkout@v1
     - uses: azure/docker-login@v1
       with:
-        login-server: ${{ secrets.ACR_NAME }}
-        username: ${{ secrets.ACR_USERNAME }}
-        password: ${{ secrets.ACR_PASSWORD }}
+        login-server: ${{ secrets.AKSragoetz }}
+        username: ${{ secrets.AKSragoetz }}
+        password: ${{ secrets.3tsqoJycpGOF2svpE1O=bnutrpgTtVqW }}
     - name: Build the Docker image
       env:
-        ACR_NAME: ${{ secrets.ACR_NAME }}
+        ACR_NAME: ${{ secrets.AKSragoetz }}
       run: |
         ls -l
         cd apps/aci-helloworld
         ls -l
         echo "Running docker build"
-        docker build . --tag $ACR_NAME/aci-helloworld:${{ github.sha }}
+        docker build . --tag AKSragoetz/aci-helloworld:${{ github.sha }}
         echo "Tagging with latest"
-        docker tag $ACR_NAME/aci-helloworld:${{ github.sha }} $ACR_NAME/aci-helloworld:latest
+        docker tag AKSragoetz/aci-helloworld:${{ github.sha }} AKSragoetz/aci-helloworld:latest
         echo "Pushing image"
-        docker push $ACR_NAME/aci-helloworld:${{ github.sha }}
-        docker push $ACR_NAME/aci-helloworld:latest
+        docker push AKSragoetz/aci-helloworld:${{ github.sha }}
+        docker push AKSragoetz/aci-helloworld:latest
         echo "Done"
