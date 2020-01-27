@@ -24,7 +24,7 @@ jobs:
         ls -l
         echo "Running docker build"
         docker build . --tag $ACR_NAME/aci-helloworld:${{ github.sha }}
-        echo "Tagging with latest"
+        echo "Tagging with latest tag"
         docker tag $ACR_NAME/aci-helloworld:${{ github.sha }} $ACR_NAME/aci-helloworld:latest
         echo "Pushing image"
         docker push $ACR_NAME/aci-helloworld:${{ github.sha }}
